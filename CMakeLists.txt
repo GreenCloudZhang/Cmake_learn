@@ -17,4 +17,5 @@ set(PROJECT_BINARY_DIR ${PROJECT_SOURCE_DIR}/build)
 
 #添加Cmake子目录，进入src cmakelists继续构建
 add_subdirectory(src/ProjectLua MyLUA)
+add_subdirectory(src/ProjectVkSample MyVkSample)
 #pybind11_add_module(example example.cpp)
