@@ -1,0 +1,9 @@
+register
+t – for shader resource views (SRV)
+s – for samplers
+u – for unordered access views (UAV)
+b – for constant buffer views (CBV)
+
+Texture2D<float4> tex1 : register(t3,  space0)
+Texture2D<float4> tex2[4] : register(t10)
+Texture2D<float4> tex3[7][5][3] : register(t20, space1)

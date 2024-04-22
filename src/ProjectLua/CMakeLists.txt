@@ -25,20 +25,20 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 #在指定目录查找库，保存在变量LIBPaths
 #find_library(LIB_PATHS shared ${PROJECT_SOURCE_DIR}/lib)
 
-#file(GLOB LUA_FILES_H ${PROJECT_SOURCE_DIR}/extern/lua-5.4.6/include/*.h)
-#file(GLOB LUA_FILES_C ${PROJECT_SOURCE_DIR}/extern/lua-5.4.6/cfile/*.c)
+#file(GLOB LUA_FILES_H ${CMAKE_SOURCE_DIR}/extern/lua-5.4.6/include/*.h)
+#file(GLOB LUA_FILES_C ${CMAKE_SOURCE_DIR}/extern/lua-5.4.6/cfile/*.c)
 
 #add_library(lua ${LUA_FILES_H} ${LUA_FILES_C})
-#list(APPEND LUA_LIB lua)
+#target_include_directories(lua PUBLIC ${LUA_FILES_H})
 
 #生成指定target
 add_executable(main 
 main.cpp
 )
 
-#target_link_libraries(main PUBLIC ${LUA_LIB})
-target_link_libraries(main PUBLIC ${CMAKE_SOURCE_DIR}/extern/lua-5.4.6/lib/lua.lib)
+#target_link_libraries(main lua)
 
+target_link_libraries(main PUBLIC ${CMAKE_SOURCE_DIR}/extern/lua-5.4.6/lib/lua.lib)
 target_include_directories(main PUBLIC ${CMAKE_SOURCE_DIR}/extern/lua-5.4.6/include)
 
 #链接共享库
