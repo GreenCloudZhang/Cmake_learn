@@ -26,10 +26,10 @@ find_package(Vulkan REQUIRED)
 #在指定目录查找库，保存在变量LIBPaths
 #find_library(LIB_PATHS shared ${PROJECT_SOURCE_DIR}/lib)
 
-#file(GLOB LUA_FILES_H ${CMAKE_SOURCE_DIR}/extern/lua-5.4.6/include/*.h)
-#file(GLOB LUA_FILES_C ${CMAKE_SOURCE_DIR}/extern/lua-5.4.6/cfile/*.c)
+file(GLOB STBIMAGE_FILES_H ${CMAKE_SOURCE_DIR}/extern/stb_image/*.h)
+file(GLOB STBIMAGE_FILES_C ${CMAKE_SOURCE_DIR}/extern/stb_image/*.c)
 
-#add_library(lua ${LUA_FILES_H} ${LUA_FILES_C})
+add_library(STBIMAGE ${STBIMAGE_FILES_H} ${STBIMAGE_FILES_C})
 #target_include_directories(lua PUBLIC ${LUA_FILES_H})
 
 #生成指定target
@@ -37,7 +37,11 @@ add_executable(helloVK
 helloVK.cpp
 )
 
-target_link_libraries(helloVK PUBLIC Vulkan::Vulkan ${CMAKE_SOURCE_DIR}/extern/glfw/lib-vc2022/glfw3.lib)
-target_include_directories(helloVK PUBLIC 
+target_link_libraries(helloVK PUBLIC 
+Vulkan::Vulkan 
+${CMAKE_SOURCE_DIR}/extern/glfw/lib-vc2022/glfw3.lib
+STBIMAGE)
+target_include_directories(helloVK PUBLIC
 ${CMAKE_SOURCE_DIR}/extern/glm
-${CMAKE_SOURCE_DIR}/extern/glfw/include)
+${CMAKE_SOURCE_DIR}/extern/glfw/include
+${CMAKE_SOURCE_DIR}/extern/stb_image)
